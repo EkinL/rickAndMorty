@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import axios from 'axios'
+import CharacterCard from './CharacterCard.vue'
 
 const characters = ref([])
 const currentPage = ref(1)
@@ -45,18 +46,7 @@ const previousPage = () => {
         :key="character.id"
         class="bg-white shadow-md rounded-lg overflow-hidden transform transition hover:scale-105 hover:shadow-lg cursor-pointer"
       >
-        <div class="relative w-full h-64">
-          <img
-            :src="character.image"
-            alt="Character Image"
-            class="absolute inset-0 w-full h-full object-cover"
-          />
-        </div>
-        <div class="p-4">
-          <h2 class="text-xl font-semibold text-gray-800">{{ character.name }}</h2>
-          <p class="text-gray-600">Status: {{ character.status }}</p>
-          <p class="text-gray-600">Species: {{ character.species }}</p>
-        </div>
+        <CharacterCard :character="character" />
       </div>
     </div>
     <div class="flex justify-center mt-6 space-x-4">

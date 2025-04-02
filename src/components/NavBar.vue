@@ -1,17 +1,9 @@
 <script setup>
-import {
-  Disclosure,
-  DisclosureButton,
-  DisclosurePanel,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuItems,
-} from '@headlessui/vue'
-import { MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
+import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
+import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline'
 import { useRoute } from 'vue-router'
 import DarkMode from './DarkMode.vue'
+import SearchBar from './SearchBar.vue'
 
 const route = useRoute()
 </script>
@@ -64,20 +56,7 @@ const route = useRoute()
             </RouterLink>
           </div>
         </div>
-        <div class="flex flex-1 items-center justify-center px-2 lg:ml-6 lg:justify-end">
-          <div class="grid w-full max-w-lg grid-cols-1 lg:max-w-xs">
-            <input
-              type="search"
-              name="search"
-              class="col-start-1 row-start-1 block w-full rounded-md bg-white dark:bg-gray-700 py-1.5 pr-3 pl-10 text-base text-gray-900 dark:text-white outline-1 -outline-offset-1 outline-gray-300 dark:outline-gray-600 placeholder:text-gray-400 dark:placeholder:text-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-              placeholder="Search"
-            />
-            <MagnifyingGlassIcon
-              class="pointer-events-none col-start-1 row-start-1 ml-3 size-5 self-center text-gray-400 dark:text-gray-300"
-              aria-hidden="true"
-            />
-          </div>
-        </div>
+        <SearchBar />
         <div class="flex items-center lg:hidden">
           <DisclosureButton
             class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-500 dark:hover:text-white focus:ring-2 focus:ring-indigo-500 focus:outline-none focus:ring-inset"

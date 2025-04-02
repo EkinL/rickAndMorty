@@ -1,13 +1,13 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import axios from 'axios'
 
 const route = useRoute()
 const character = ref(null)
 
-onMounted(() => {
-  const characterId = route.params.id
+// Fonction pour récupérer les détails du personnage
+const fetchCharacter = (characterId) => {
   axios
     .get(`https://rickandmortyapi.com/api/character/${characterId}`)
     .then((response) => {
@@ -16,7 +16,18 @@ onMounted(() => {
     .catch((error) => {
       console.error(error)
     })
-})
+}
+
+// Surveille les changements de l'ID du personnage dans les paramètres de la route
+watch(
+  () => route.params.id,
+  (newId) => {
+    if (newId) {
+      fetchCharacter(newId)
+    }
+  },
+  { immediate: true }, // Charge les données immédiatement lors du montage du composant
+)
 </script>
 
 <template>

@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import axios from 'axios'
 import CharacterCard from './CharacterCard.vue'
+import PaginationControls from './PaginationControls.vue'
 
 const characters = ref([])
 const currentPage = ref(1)
@@ -12,7 +13,7 @@ const fetchCharacters = (page = 1) => {
     .get(`https://rickandmortyapi.com/api/character?page=${page}`)
     .then((response) => {
       characters.value = response.data.results
-      totalPages.value = response.data.info.pages // Stockez le nombre total de pages
+      totalPages.value = response.data.info.pages
     })
     .catch((error) => {
       console.error(error)
@@ -21,7 +22,6 @@ const fetchCharacters = (page = 1) => {
 
 fetchCharacters(currentPage.value)
 
-// Fonction pour aller à la page suivante
 const nextPage = () => {
   if (currentPage.value < totalPages.value) {
     currentPage.value++
@@ -51,21 +51,11 @@ const previousPage = () => {
         <CharacterCard :character="character" />
       </div>
     </div>
-    <div class="flex justify-center mt-6 space-x-4">
-      <button
-        @click="previousPage"
-        :disabled="currentPage <= 1"
-        class="px-4 py-2 bg-blue-500 dark:bg-blue-700 text-white rounded-lg shadow-md hover:bg-blue-600 dark:hover:bg-blue-800 disabled:opacity-50 disabled:cursor-not-allowed"
-      >
-        Page précédente
-      </button>
-      <button
-        @click="nextPage"
-        :disabled="currentPage >= totalPages"
-        class="px-4 py-2 bg-blue-500 dark:bg-blue-700 text-white rounded-lg shadow-md hover:bg-blue-600 dark:hover:bg-blue-800 disabled:opacity-50 disabled:cursor-not-allowed"
-      >
-        Page suivante
-      </button>
-    </div>
+    <PaginationControls
+      :currentPage="currentPage"
+      :totalPages="totalPages"
+      @previousPage="previousPage"
+      @nextPage="nextPage"
+    />
   </div>
 </template>

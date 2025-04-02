@@ -1,6 +1,5 @@
 <script setup>
 import Character from '@/components/Character.vue'
-import DarkMode from '@/components/DarkMode.vue'
 </script>
 
 <template>

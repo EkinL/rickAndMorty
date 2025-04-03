@@ -4,7 +4,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline'
 import { useRoute } from 'vue-router'
 import DarkMode from './DarkMode.vue'
 import SearchBar from './SearchBar.vue'
-
+import logo from '@/assets/Rickipedia.svg'
 const route = useRoute()
 </script>
 
@@ -18,11 +18,7 @@ const route = useRoute()
       <div class="flex h-16 justify-between">
         <div class="flex px-2 lg:px-0">
           <div class="flex shrink-0 items-center">
-            <img
-              class="h-8 w-auto"
-              src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
-              alt="Your Company"
-            />
+            <img class="h-16 w-auto" :src="logo" alt="Rickipedia" />
           </div>
           <div class="hidden lg:ml-6 lg:flex lg:space-x-8">
             <RouterLink

@@ -9,7 +9,11 @@ const route = useRoute()
 </script>
 
 <template>
-  <Disclosure as="nav" class="bg-white dark:bg-gray-900 shadow-sm" v-slot="{ open }">
+  <Disclosure
+    as="nav"
+    class="bg-white dark:bg-gray-900 shadow-sm fixed top-0 w-full z-50"
+    v-slot="{ open }"
+  >
     <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
       <div class="flex h-16 justify-between">
         <div class="flex px-2 lg:px-0">
